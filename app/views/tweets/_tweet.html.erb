@@ -1,0 +1,29 @@
+<li class="unlight" id="tweet-<%= tweet.id %>">
+  <%= link_to tweet.user, class: 'avatar' do %>
+    <%= image_tag tweet.user.avatar.url(:thumb) || 'avatar.jpg' %>
+  <% end %>
+  <%= link_to tweet.user, class: 'author' do %>@<%= tweet.user.username %><% end %><span id="2rngyENKoTY" class="content"><%= auto_link(parse(tweet.tweet_text), html: { target: '_blank' }) %></span>
+  <span class="stamp">
+    <a href="#" class="time" title="<%= tweet.created_at %>">
+      <%= time_ago_in_words tweet.created_at %> ago &middot;
+    </a>
+    <span class="method">
+      Via Facebook &middot;
+    </span>
+    <span class="reply">
+      <a href="/statuses/GwK5ryH0QJw">From iPhone </a>
+    </span>
+  </span>
+  <span class="op">
+    <%= link_to '', reply_tweet_path(tweet.id), method: :post, remote: true, class: 'reply' %>
+    <!-- <a href="#" text="" class="repost" title="<%= tweet.user.username %>"></a> -->
+    <% if tweet_favored?(tweet.id) %>
+      <%= link_to '', favorite_path(get_favorite(tweet.id)), method: :delete, remote: true, class: "post_act share faved" %>
+    <% else %>
+      <%= link_to '', favorites_path(tweet_id: tweet.id), method: :post, remote: true, class: 'post_act share' %>
+    <% end %>
+    <% if tweet.user == current_user %>
+      <%= link_to '', tweet_path(tweet), method: :delete, remote: true, class: 'post_act delete' %>
+    <% end %>
+  </span>
+</li>

@@ -1,0 +1,252 @@
+<table id="columns">
+  <tbody>
+    <tr>
+      <td id="main">
+        <div id="info">
+          <div id="avatar">
+            <a href="#">
+              <%= image_tag @user.avatar.url(:thumb), class: "avatar" %>
+            </a>
+          </div>
+          <div id="panel">
+            <h1><%= @user.username %></h1>
+            <% if @user == current_user %>
+              <p class="actions">
+                <%= link_to "Update", edit_user_path(@user), class: 'post_act bh' %>
+              </p>
+              <p id="userview_link">
+                <a href="#" class="label">Statistics</a><a class="label test_feature" href="/dialogue/qwertZ">Profile Activity</a>
+              </p>
+            <% else %>
+              <p class="actions">
+                <% if following?(@user) %>
+                  <%= link_to 'unfollow', relationship_path(current_user.relationships.find_by_friend_id(@user)), method: :delete, remote: true, class: 'post_act bh' %>
+                <% else %>
+                  <%= link_to 'follow', relationships_path(friend_id: @user.id), method: :post, remote: true, class: 'post_act bh' %>
+                <% end %>
+                <a class="bl" href="javascript:void(0);" id="leavemsg">给她留言</a>
+                <a class="bl" href="http://fanfou.com/privatemsg.create/aristotle">发私信</a>
+              </p>
+            <p id="userview_link">
+            <a class="label" href="http://fanfou.com/userview/aristotle">她关注的消息</a><a class="label test_feature" href="http://fanfou.com/dialogue/aristotle">和她的对话</a></p>
+            <% end %>
+          </div>
+        </div>
+        <div id="content">
+          <div class="message" id="stream">
+            <ol>
+              <%= render(@tweets) || "No Tweets" %>
+            </ol>
+          </div>
+          <ul class="paginator">
+            <li class="current">1</li>
+            <li>
+              <a href="http://fanfou.com/aristotle/p.2">2</a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/aristotle/p.3">3</a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/aristotle/p.4">4</a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/aristotle/p.5">5</a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/aristotle/p.6">6</a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/aristotle/p.7">7</a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/aristotle/p.2">Previous</a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/aristotle/p.746">Next</a>
+            </li>
+          </ul>
+        </div>
+      </td>
+      <td id="sidebar">
+        <div id="iconset">
+          <%= image_tag 'ico-email-gmail.gif' %>
+          <%= image_tag 'ico-mobile.gif' %>
+          <%= image_tag 'ico-gtalk.gif' %>
+          <a href="#">
+            <%= image_tag 'ico-email-default.gif' %>
+          </a>
+        </div>
+        <div id="user_infos">
+          <ul class="vcard">
+            <li class="adr">Location：<span class="region"><a href=""> <%= @user.location %></a></span></li>
+            <li id="bio">Readme：<span> <%= @user.about %></span><a href="" style="margin-left: 0.5em;">(More...)</a>
+            </li>
+        </div>
+        <div class="tags">
+          <div style="margin-left: 2em">
+            <a href="#" target="_blank">Technology</a>
+            <a href="#" target="_blank">CS</a>
+            <a href="#" target="_blank">Computers</a>
+          </div>
+        </div>
+        <ul id="user_stats">
+          <li>
+            <%= link_to following_user_path(@user) do %>
+              <span class="count"><%= @user.following_count %></span>
+              <span class="label">Followers</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to followers_user_path(@user) do %>
+              <span class="count"><%= @user.followers_count %></span>
+              <span class="label">Followers</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to following_user_path(@user) do %>
+              <span class="count"><%= @user.tweets_count %></span>
+              <span class="label">News</span>
+            <% end %>
+          </li>
+        </ul>
+        <div class="stabs">
+          <ul>
+            <li class="current">
+              <%= link_to following_user_path(@user) do %>
+                <span class="label">News</span> <span class="count">(<%= @user.tweets_count %>)</span>
+              <% end %>
+            </li>
+            <li>
+              <a href="#"><span class="label">Shares</span> <span class="count">(23)</span></a>
+            </li>
+            <li>
+              <a href="#"><span class="label">Photos</span> <span class="count">(1302)</span></a>
+            </li>
+          </ul>
+        </div>
+        <div id="friends">
+          <h2>People Who follow</h2>
+          <ul class="alist">
+            <li>
+              <a href="http://fanfou.com/gravity0" title=
+              "gravity0"><img alt="gravity0" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/d0.jpg"><span>gravity0</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/anegie" title="太空小孩"><img alt=
+              "太空小孩" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/7j.jpg"><span>太空小孩</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/lagunaloire" title=
+              "狂风先生"><img alt="狂风先生" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/q4.jpg"><span>狂风先生</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/earlyzaozao" title="邢早早"><img alt=
+              "邢早早" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/kf.jpg"><span>邢早早</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/~I8rkwsel1f8" title=
+              "DarkRiver"><img alt="DarkRiver" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/sc.jpg"><span>DarkRiver</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/blessedkristin" title=
+              "青瓦的旧时光"><img alt="青瓦的旧时光" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/g8.jpg"><span>青瓦的旧时光</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/%E8%AF%8D%E7%A9%B7" title=
+              "假装不是礼物"><img alt="假装不是礼物" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/d4.jpg"><span>假装不是礼物</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/forrestjian" title=
+              "Forrest阿甘"><img alt="Forrest阿甘" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/ae.jpg"><span>Forrest阿甘</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/hixiaodai" title="海小呆"><img alt=
+              "海小呆" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/0p.jpg"><span>海小呆</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/liangjing116" title="梁京"><img alt=
+              "梁京" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/vs.jpg"><span>梁京</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/llairui.com" title="雪來"><img alt=
+              "雪來" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/je.jpg"><span>雪來</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/~vLuOcXigkMQ" title=
+              "EquipmentRt"><img alt="EquipmentRt" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/c5.jpg"><span>EquipmentRt</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/Mrsw" title="李呀李等等"><img alt=
+              "李呀李等等" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/cf.jpg"><span>李呀李等等</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/dezhaos" title="剑花"><img alt="剑花"
+              src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/qd.jpg"><span>剑花</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/wangmengxuan" title=
+              "阿事儿"><img alt="阿事儿" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/xp.jpg"><span>阿事儿</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/%E7%99%BD%E5%B0%8F%E6%A2%81"
+              title="panda"><img alt="panda" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/tn.jpg"><span>panda</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/kranfel" title="kranfel"><img alt=
+              "kranfel" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/c2.jpg"><span>kranfel</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/ShoppingQueen" title=
+              "Shopping.Q"><img alt="Shopping.Q" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/3r.jpg"><span>Shopping.Q</span></a>
+            </li>
+            <li>
+              <a href=
+              "http://fanfou.com/%E9%A9%AC%E5%8B%92%E6%88%88%E5%A3%81%E4%B8%8A%E7%9A%84%E8%83%8C%E5%BD%B1"
+              title="王饱翔"><img alt="王饱翔" src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/09.jpg"><span>王饱翔</span></a>
+            </li>
+            <li>
+              <a href="http://fanfou.com/zkaip" title="可.可."><img alt=
+              "可.可." src=
+              "./%E6%98%A5%E7%87%88%E5%85%AC%E5%AD%90(aristotle)_%E9%A5%AD%E5%90%A6_files/qp.jpg"><span>可.可.</span></a>
+            </li>
+          </ul><a class="more" href="http://fanfou.com/friends/aristotle">»
+          More</a>
+        </div>
+        <div class="sect">
+          <div class="user-op">
+            <ul>
+              <li>
+                <a class="post_act block" href=
+                "http://fanfou.com/user.block/aristotle">Add to blacklist</a>
+              </li>
+              <li>
+                <a class="report" href=
+                "http://fanfou.com/user.report/aristotle" id=
+                "user-op-report">Report <%= @user.username %></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

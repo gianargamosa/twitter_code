@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Twitter Clone</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <% unless notice.blank? %>
+      <div class="alert alert-info alert-dismissable alert-fixed">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= notice %>
+      </div>
+    <% end %>
+    <% unless alert.blank? %>
+      <div class="alert alert-danger alert-dismissable alert-fixed">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= alert %>
+      </div>
+    <% end %>
+    <div id="bg-img" data-img="<%= fetch_bg_img %>"></div>
+
+
+
+    <div id="container" class="newlook">
+      <div id="header">
+        <h1>
+          <a hidefocus="true" class="global-header-anchor" href="./首页_饭否_files/首页_饭否.html">
+            <p class="pngfix global-header-content logo20161005">首页</p>
+          </a>
+        </h1>
+        <div id="navigation" class="ui-roundedbox">
+          <% if user_signed_in? %>
+            <div class="navbar-list">
+              <ul>
+                <li>
+                  <%= link_to "Home", root_url %>
+                </li>
+                <li>
+                  <%= link_to "Profile", user_path(current_user) %>
+                  <a href="#">Profile</a>
+                </li>
+                <li>
+                  <%= link_to("Find Friends", find_friends_path) %>
+                </li>
+                <li>
+                  <%= link_to "Settings", edit_user_path(current_user.id) %>
+                </li>
+                <li>
+                  <a href="#">Help</a>
+                </li>
+                <li>
+                  <%= link_to('Sign-out', destroy_user_session_path, method: :delete) %>
+                </li>
+              </ul>
+            </div>
+          <% else %>
+            <div class="navbar-list">
+              <ul>
+                <li>
+                  <a href="#">About Us</a>
+                </li>
+                <li>
+                  <a href="#">Register?</a>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <%= yield %>
+      <%= render 'partials/footer' %>
+    </div>
+  </body>
+</html>

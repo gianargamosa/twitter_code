@@ -1,0 +1,113 @@
+<div id="user_top">
+  <a href="http://fanfou.com/~RdZ_ayJyViA">
+    <%= image_tag current_user.avatar.url(:thumb) %>
+  </a>
+  <h3>
+    @<%= current_user.username %>
+  </h3>
+</div>
+<!-- <ul id="reminder">
+  <li><a href="#">Upload Avatar!</a></li>
+  <li><a href="#">Verify Email!</a></li>
+  <li><a href="#">Bind your phone!</a></li>
+</ul> -->
+<ul id="user_stats">
+  <li>
+    <%= link_to following_user_path(current_user) do %>
+      <span class="count" style="font-size: 18px;"><%= current_user.following_count %></span>
+      <span class="label" style="font-weight: bold;">Following</span>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to followers_user_path(current_user) do %>
+      <span class="count" style="font-size: 18px;"><%= current_user.followers_count %></span>
+      <span class="label" style="font-weight: bold;">Followers</span>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to user_path(current_user) do %>
+      <span class="count" style="font-size: 18px;"><%= current_user.tweets_count %></span>
+      <span class="label" style="font-weight: bold;">News</span>
+    <% end %>
+  </li>
+</ul>
+<div id="goodapp">
+  <a href="#" target="_blank">
+    <strong>
+      <img src="./assets/mac_osx.png" width="48" height="48" style="margin-right: 0.5em; margin-bottom: 0.5em;">Weebo Platform
+      </strong>
+    <span>
+      Love Fan is the Windows Phone platform for the client, covers most of the functions of rice.
+    </span>
+  </a>
+</div>
+<div class="stabs" id="navtabs">
+  <ul>
+    <li id="navtabs-home" class="current">
+      <a href="#">
+        <span class="label">Home</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <span class="label">@Replies</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <span class="label">Direct Messages</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <span class="label">Favorites</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <span class="label">Everyone</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div id="searchr">
+  <form action="#" method="get" id="searchr-form">
+    <input type="text" id="searchr-input" name="q" value=""><input type="submit" id="searchr-submit" value="find">
+  </form>
+</div>
+<div id="savedsearchs" class="stabs colltab trendtabs" style="display:none;">
+  <b></b>
+  <h2>Saved searches</h2>
+  <ul style="display: block;"></ul>
+</div>
+<div class="stabs colltab trendtabs" id="trendtabs">
+  <b id="trendicon"></b>
+  <h2 id="trendtitle">Trends</h2>
+  <ul id="trendlist" style="display: block;">
+    <li>
+      <a href="#" squery="国庆|假期|放假|节日|十一"><span class="label">Happy holiday</span></a>
+      <div class="spinner"></div>
+    </li>
+    <li>
+      <a href="#"><span class="label">Mirriam Defensor</span></a>
+      <div class="spinner"></div>
+    </li>
+    <li>
+      <a href="#" squery="国庆|假期|放假|节日|十一"><span class="label">#WorldTeachersDay</span></a>
+      <div class="spinner"></div>
+    </li>
+    <li>
+      <a href="#" squery="国庆|假期|放假|节日|十一"><span class="label">#SnowFlakes</span></a>
+      <div class="spinner"></div>
+    </li>
+  </ul>
+</div>
+<div class="sect">
+  <h2>Invite friends to join</h2>
+  <p>Send the following URL to a friend via MSN / QQ / FB / GMAIL</p>
+  <p>
+    <textarea name="invite-url" id="invite-url" rows="2" cols="25" class="auto-select" readonly="readonly" style="border: none; resize: none !important;">http://fanfou.com/register/cJH7SrQXlmYy</textarea>
+  </p>
+  <p class="formtip">Friends will automatically follow you after registration</p>
+  <p>or <a href="http://fanfou.com/finder#finder_invite">Send Email Invite a friend</a></p>
+</div>

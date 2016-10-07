@@ -1,0 +1,129 @@
+
+    <div id="ZoomSpin" style="position: absolute; left: 10px; top: 10px; visibility: hidden; z-index: 525;">
+      <img id="SpinImage" src="./assets/zoom-spin-1.png">
+    </div>
+    <div id="ZoomBox" style="position: absolute; left: 10px; top: 10px; visibility: hidden; z-index: 499;">
+      <img src="./assets/spacer.gif" id="ZoomImage" border="0" style="display: block; width: 10px; height: 10px; cursor: pointer;">
+      <div id="ZoomToAlbum"></div>
+      <div id="ZoomClose" style="position: absolute; right: -15px; top: -15px; visibility: hidden;"></div>
+    </div>
+    <div id="ZoomCapDiv" style="position: absolute; visibility: hidden; margin-left: auto; margin-right: auto; z-index: 501;">
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr height="26">
+            <td class="left"></td>
+            <td class="center">
+              <div id="ZoomCaption"></div>
+            </td>
+            <td class="right"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="imgbg"></div>
+
+      <div id="PopupBox">
+        <div id="PopupClose" class="close"></div>
+        <div id="PopupUpdate">
+          <p id="PopupSrc">回复：</p>
+          <form method="post" action="" class="limit" id="PopupForm">
+            <div class="textarea-wrapper"><textarea tabindex="1" name="content" rows="2" cols="70" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea></div>
+            <div class="act">
+              <div class="actpost"><input type="hidden" name="action" value="msg.post"><input type="hidden" name="ajax" value=""><input type="hidden" name="in_reply_to_status_id" value=""><input type="hidden" name="repost_status_id" value=""><input type="hidden" name="token" value="2160b08e"><img class="loading" src="assets/ajax-indicator.gif"><input tabindex="2" type="submit" class="formbutton" title="按Ctrl+Enter键发送消息" value="send"></div>
+            </div>
+            <p class="tip"><span class="counter">140</span></p>
+          </form>
+        </div>
+      </div>
+      
+
+      <div id="PopupBackground"></div>
+      
+      <table id="columns">
+        <tbody>
+          <tr>
+            <td id="main">
+              <div id="phupdate">
+                <%= form_tag tweets_path(parent_id: nil), multipart: true, class: 'main-form', method: :post, remote: true do %>
+                    <%= text_area_tag "tweet[tweet_text]", nil, class: "post-textarea", placeholder: "What are you doing?", rows: '3', cols: '70'  %>
+                  <div class="media-container hidden">
+                    <img id="tweet-img-preview">
+                    <a id="remove-tweet-img" href="#">&times;</a>
+                  </div>
+                    <%= hidden_field_tag "tweet[location]", nil %>
+                    <%= file_field_tag "tweet[media]", class: "hidden", id: "media-upload-btn" %>
+                    <%= button_tag 'Post', id: "tweet", class: "tweet-button", style: 'padding-left: 8px; padding-right: 8px;' %>
+                      <span id="tweet-count">140</span>
+                      <a id="ps-media-upload-btn" href="javascript:void(0);">
+                        Photo
+                      </a>
+                      &middot;
+                      <a id="location-btn" href="#">
+                        Location
+                      </a>
+                <% end %>
+                <div id="tweet-error">
+                  <%= render 'partials/error_message', error_message: nil %>
+                </div>
+              </div>
+              <div id="content">
+                <div id="timeline-head" style="display: none;"></div>
+                <div id="timeline-notification" style="display: none;">
+                  <a href="javascript:void(0);">
+                    New <strong id="timeline-count">(1)</strong> Click on the latest news, click to view
+                  </a>
+                </div>
+
+                <div id="stream" class="message">
+                  <ol class="wa solo">
+                    <%= render(@tweets) || "No Tweets" %>
+                  </ol>
+                </div>
+                <div class="pagination" style="display:none;"><a id="pagination-more" class="more" href="http://fanfou.com/home#" onclick="return false;">更多</a></div>
+              </div>
+            </td>
+            <td id="sidebar">
+              <%= render 'partials/sidebar' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    <script type="text/javascript">
+      if (window.top !== window.self){
+        setTimeout(function(){document.body.innerHTML='';}, 0);
+        window.self.onload=function(){
+          document.body.innerHTML='';
+        };
+      }
+    </script>
+    <script type="text/javascript" charset="utf-8" src="./assets/utilities.js"></script><script type="text/javascript" charset="utf-8" src="./assets/fanfou.js"></script><script type="text/javascript">
+      YAHOO.util.Event.onDOMReady(function(){
+      FF.app.QuickReply(true);
+      FF.app.Repost();
+      FF.app.Timeline.init();
+      FF.app.Zoom.init('stream');
+      FF.app.Sidebar.init();
+      FF.widget.selectAndCopy('invite-url');
+      
+      jQuery('#phupdate textarea.qs').focus();
+             var elTextarea = jQuery('textarea.qs')[0];
+             if (elTextarea.createTextRange) {
+                 var range = elTextarea.createTextRange();
+                 range.moveEnd("character", jQuery('textarea.qs').val().length);
+                 range.moveStart("character",  jQuery('textarea.qs').val().length);
+                 range.select();
+             } else {
+                 elTextarea.setSelectionRange(jQuery('textarea.qs').val().length, jQuery('textarea.qs').val().length);
+          elTextarea.focus();
+             }
+      });
+      
+    </script>
+    <script type="text/javascript" charset="utf-8" src="./assets/jquery.ui.core.js"></script><script type="text/javascript" charset="utf-8" src="./assets/jquery.ui.widget.js"></script><script type="text/javascript" charset="utf-8" src="./assets/jquery.ui.position.js"></script><script type="text/javascript" charset="utf-8" src="./assets/jquery.ui.autocomplete.js"></script><script type="text/javascript" charset="utf-8" src="./assets/jquery.dnd.js"></script><script type="text/javascript" charset="utf-8" src="./assets/upload_photo.js"></script><script type="text/javascript" charset="utf-8" src="./assets/upload_location.js"></script><script type="text/javascript" charset="utf-8" src="./assets/home-autocomplete.js"></script>
+    <link rel="stylesheet" href="./assets/jquery.ui.theme.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="./assets/jquery.ui.autocomplete.css" type="text/css" media="screen" charset="utf-8">
+    <script type="text/javascript">var FF = FF || {}; FF.gaCode = "home"; </script>
+    <ul class="ui-autocomplete ui-menu ui-widget ui-widget-content" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 3; top: 0px; left: 0px; display: none;"></ul>
+    <ul class="ui-autocomplete ui-menu ui-widget ui-widget-content" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 0px; left: 0px; display: none;"></ul>
