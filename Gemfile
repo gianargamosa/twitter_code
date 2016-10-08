@@ -13,8 +13,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'link_thumbnailer'
 gem 'pry'
-
+gem 'puma'
 gem 'kaminari'
+gem 'dalli'
+gem 'faye'
+gem 'thin', require: false
+gem 'render_sync'
 
 # Use twitter bootstrap sass
 gem 'bootstrap-sass', '~> 3.2.0'
