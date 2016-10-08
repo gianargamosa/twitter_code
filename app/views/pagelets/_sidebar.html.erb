@@ -1,0 +1,17 @@
+<% if page == 'dashboard' %>
+  <%= render 'pagelets/dashboard_user_info', user_info: user %>
+  <%= render 'pagelets/statistics', user: user %>
+  <%= render 'pagelets/ads' %>
+  <%= render 'pagelets/home_navigation' %>
+  <%= render 'pagelets/search' %>
+  <%= render 'pagelets/trends' %>
+  <%= render 'pagelets/invite_friends' %>
+<% else %>
+  <%= render 'pagelets/connected_service' %>
+  <%= render 'pagelets/profile_details', profile_details: user %>
+  <%= render 'pagelets/tags' %>
+  <%= render 'pagelets/statistics', user: user %>
+  <%= render 'pagelets/profile_status', user: user %>
+  <%= render 'pagelets/connections' %>
+  <%= render 'pagelets/block_and_report', user: user %>
+<% end %>

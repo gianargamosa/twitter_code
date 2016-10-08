@@ -1,3 +1,4 @@
+
 <div id="user_top">
   <a href="http://fanfou.com/~RdZ_ayJyViA">
     <%= image_tag current_user.avatar.url(:thumb) %>
@@ -14,23 +15,24 @@
 <ul id="user_stats">
   <li>
     <%= link_to following_user_path(current_user) do %>
-      <span class="count" style="font-size: 18px;"><%= current_user.following_count %></span>
-      <span class="label" style="font-weight: bold;">Following</span>
+      <span class="count"><%= current_user.following_count %></span>
+      <span class="label">Following</span>
     <% end %>
   </li>
   <li>
     <%= link_to followers_user_path(current_user) do %>
-      <span class="count" style="font-size: 18px;"><%= current_user.followers_count %></span>
-      <span class="label" style="font-weight: bold;">Followers</span>
+      <span class="count"><%= current_user.followers_count %></span>
+      <span class="label">Followers</span>
     <% end %>
   </li>
   <li>
     <%= link_to user_path(current_user) do %>
-      <span class="count" style="font-size: 18px;"><%= current_user.tweets_count %></span>
-      <span class="label" style="font-weight: bold;">News</span>
+      <span class="count"><%= current_user.tweets_count %></span>
+      <span class="label">News</span>
     <% end %>
   </li>
 </ul>
+
 <div id="goodapp">
   <a href="#" target="_blank">
     <strong>
@@ -41,6 +43,7 @@
     </span>
   </a>
 </div>
+
 <div class="stabs" id="navtabs">
   <ul>
     <li id="navtabs-home" class="current">
@@ -70,16 +73,19 @@
     </li>
   </ul>
 </div>
+
 <div id="searchr">
   <form action="#" method="get" id="searchr-form">
     <input type="text" id="searchr-input" name="q" value=""><input type="submit" id="searchr-submit" value="find">
   </form>
 </div>
+
 <div id="savedsearchs" class="stabs colltab trendtabs" style="display:none;">
   <b></b>
   <h2>Saved searches</h2>
   <ul style="display: block;"></ul>
 </div>
+
 <div class="stabs colltab trendtabs" id="trendtabs">
   <b id="trendicon"></b>
   <h2 id="trendtitle">Trends</h2>
@@ -102,6 +108,7 @@
     </li>
   </ul>
 </div>
+
 <div class="sect">
   <h2>Invite friends to join</h2>
   <p>Send the following URL to a friend via MSN / QQ / FB / GMAIL</p>

@@ -869,7 +869,7 @@ span.ajaxprompt {
 #sidebar .stabs li.current a,
 #sidebar .stabs li a:hover {
     /*background-color: rgba(178, 209, 163, 1.0);*/
-    background: url(pale.png);
+    background: url();
     _background: #fff;
     text-decoration: none;
     border-radius: none !important;
@@ -892,7 +892,7 @@ span.ajaxprompt {
     margin: 0 0 8px -15px;
 }
 #searchr.current {
-    background: url(pale.png);
+    background: url();
     _background: #fff;
 }
 #searchr form {
@@ -1708,6 +1708,54 @@ a.photo img {
 .alist {
     *zoom: 1;
 }
+.pagination {
+    list-style: none;
+    padding: 20px 0 10px;
+    white-space: nowrap;
+    text-align: right;
+}
+.pagination a {
+    display: inline;
+    margin: 0 1px;
+    *vertical-align: middle;
+}
+.pagination a {
+    *height: 24px;
+    margin: 0 0px;
+    font-weight: bold;
+    *line-height: 24px;
+}
+.pagination a {
+    *display: inline-block;
+    *height: 22px;
+    padding: 3px 6px 4px;
+    *padding: 0 6px;
+    border: 1px solid #bbb;
+    text-decoration: none;
+    *line-height: 22px;
+    *position: relative;
+}
+.pagination a:hover {
+    *height: 24px;
+    padding: 4px 7px 5px;
+    *padding: 0 7px;
+    border: none;
+    *line-height: 24px;
+}
+.pagination a.nolink {
+    color: #ccc;
+    cursor: default;
+}
+.pagination a.nolink:hover {
+    background: transparent;
+    *height: 22px;
+    padding: 3px 6px 4px;
+    *padding: 0 6px;
+    border: 1px solid #ccc;
+    *line-height: 22px;
+}
+
+
 .paginator {
     list-style: none;
     padding: 20px 0 10px;
@@ -1754,7 +1802,8 @@ a.photo img {
     border: 1px solid #ccc;
     *line-height: 22px;
 }
-.pagination {
+
+/*.pagination {
     margin-top: 15px;
 }
 .pagination .more {
@@ -1807,7 +1856,7 @@ a.photo img {
     line-height: 22px;
     text-align: center;
     font-size: 14px;
-}
+}*/
 #content {
     min-height: 250px;
     _height: 250px;
@@ -4727,7 +4776,7 @@ textarea#flash_badge {
 #goodapp {
     width: 204px;
     margin-bottom: 15px;
-    background: url(pale.png);
+    background: url();
     _background: #fff;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -5551,7 +5600,7 @@ a.bl-added:hover {
 }
 #phupdate textarea {
     width: 482px;
-    height: 30px;
+    height: 45px;
     font-size: 12px;
 }
 #phupdate .act {

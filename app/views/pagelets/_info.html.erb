@@ -1,0 +1,31 @@
+<div id="info">
+  <div id="avatar">
+    <a href="#">
+      <%= image_tag user.avatar.url(:thumb), class: "avatar" %>
+    </a>
+  </div>
+  <div id="panel">
+    <h1><%= user.username %></h1>
+    <% if user == current_user %>
+      <p class="actions">
+        <%= link_to "Update", edit_user_path(user), class: 'post_act bh' %>
+      </p>
+      <p id="userview_link">
+        <a href="#" class="label">Statistics</a><a class="label test_feature" href="#">Profile Activity</a>
+      </p>
+    <% else %>
+      <p class="actions">
+        <% if following?(user) %>
+          <%= link_to 'unfollow', relationship_path(current_user.relationships.find_by_friend_id(user)), method: :delete, remote: true, class: 'post_act bh' %>
+        <% else %>
+          <%= link_to 'follow', relationships_path(friend_id: user.id), method: :post, remote: true, class: 'post_act bh' %>
+        <% end %>
+        <a class="bl" href="javascript:void(0);" id="leavemsg">给她留言</a>
+        <a class="bl" href="">发私信</a>
+      </p>
+      <p id="userview_link">
+        <a class="label" href="">她关注的消息</a><a class="label test_feature" href="">和她的对话</a>
+      </p>
+    <% end %>
+  </div>
+</div>
