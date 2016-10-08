@@ -1,6 +1,5 @@
 class Tweet < ActiveRecord::Base
-
-  self.per_page = 20
+  self.per_page = 15
 
   belongs_to :user
   belongs_to :parent, class_name: "Tweet"

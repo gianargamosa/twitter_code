@@ -1,0 +1,15 @@
+<div class="stabs">
+  <ul>
+    <li class="current">
+      <%= link_to following_user_path(user) do %>
+        <span class="label">News</span> <span class="count">(<%= user.tweets_count %>)</span>
+      <% end %>
+    </li>
+    <li>
+      <a href="#"><span class="label">Shares</span> <span class="count">(23)</span></a>
+    </li>
+    <li>
+      <a href="#"><span class="label">Photos</span> <span class="count">(1302)</span></a>
+    </li>
+  </ul>
+</div>
