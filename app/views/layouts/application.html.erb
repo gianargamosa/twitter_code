@@ -20,9 +20,6 @@
       </div>
     <% end %>
     <div id="bg-img" data-img="<%= fetch_bg_img %>"></div>
-
-
-
     <div id="container" class="newlook">
       <div id="header">
         <h1>
@@ -39,7 +36,6 @@
                 </li>
                 <li>
                   <%= link_to "Profile", user_path(current_user) %>
-                  <a href="#">Profile</a>
                 </li>
                 <li>
                   <%= link_to("Find Friends", find_friends_path) %>
@@ -62,7 +58,7 @@
                   <a href="#">About Us</a>
                 </li>
                 <li>
-                  <a href="#">Register?</a>
+                  <%= link_to("Register?", new_static_page_path) %>
                 </li>
               </ul>
             </div>

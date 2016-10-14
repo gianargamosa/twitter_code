@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require default
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require jquery.backstretch

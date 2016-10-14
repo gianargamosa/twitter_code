@@ -12,6 +12,10 @@ module ApplicationHelper
 
   end
 
+  def expand_url(content)
+    
+  end
+
   def fetch_bg_img
     if user_signed_in?
       '/assets/background_home.jpg'

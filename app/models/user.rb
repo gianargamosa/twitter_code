@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-
+  after_update :flush_tweet_cache
   attr_accessor :login
 
   self.per_page = 20
@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     else
       where(conditions).first
     end
+  end
+
+  def flush_tweet_cache
+    Rails.cache.delete('tweet')
   end
 
 end

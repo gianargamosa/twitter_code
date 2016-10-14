@@ -1,20 +1,22 @@
-<ul id="user_stats">
-  <li>
-    <%= link_to following_user_path(user) do %>
-      <span class="count"><%= user.following_count %></span>
-      <span class="label">Following</span>
-    <% end %>
-  </li>
-  <li>
-    <%= link_to followers_user_path(user) do %>
-      <span class="count"><%= user.followers_count %></span>
-      <span class="label">Followers</span>
-    <% end %>
-  </li>
-  <li>
-    <%= link_to following_user_path(user) do %>
-      <span class="count"><%= user.tweets_count %></span>
-      <span class="label">News</span>
-    <% end %>
-  </li>
-</ul>
+<% cache([user], expires_in: 5.minutes) do %>
+  <ul id="user_stats">
+    <li>
+      <%= link_to following_user_path(user) do %>
+        <span class="count"><%= user.following_count %></span>
+        <span class="label">Following</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to followers_user_path(user) do %>
+        <span class="count"><%= user.followers_count %></span>
+        <span class="label">Followers</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to following_user_path(user) do %>
+        <span class="count"><%= user.tweets_count %></span>
+        <span class="label">News</span>
+      <% end %>
+    </li>
+  </ul>
+<% end %>

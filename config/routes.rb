@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: "home#index", as: "home"
   end
+
   unauthenticated :user do
     root 'static_pages#index'
   end
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
   resources :favorites, only: [:create, :destroy]
   resources :retweets, only: [:create, :destroy]
   resources :find_friends, only: :index
-
+  resources :static_pages
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

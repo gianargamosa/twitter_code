@@ -1,21 +1,33 @@
 <div id="phupdate">
   <%= form_tag tweets_path(parent_id: nil), multipart: true, class: 'main-form', method: :post, remote: true do %>
-      <%= text_area_tag "tweet[tweet_text]", nil, class: "post-textarea", placeholder: "What are you doing?", rows: '3', cols: '70'  %>
+    <span class="composer-textarea">
+      <%= text_area_tag "tweet[tweet_text]", nil, placeholder: "What are you doing?" %>
+      <a href="#" class="close-composer">&times;</a>
+    </span>
+    
     <div class="media-container hidden">
       <img id="tweet-img-preview">
       <a id="remove-tweet-img" href="#">&times;</a>
     </div>
-      <%= hidden_field_tag "tweet[location]", nil %>
-      <%= file_field_tag "tweet[media]", class: "hidden", id: "media-upload-btn" %>
-      <%= button_tag 'Post', id: "tweet", class: "tweet-button", style: 'padding-left: 8px; padding-right: 8px;' %>
-        <span id="tweet-count">140</span>
+      <div class="tools">
+        <%= hidden_field_tag "tweet[location]", nil %>
+        <%= file_field_tag "tweet[media]", class: "hidden", id: "media-upload-btn" %>
+        <%= button_tag 'Post', id: "tweet", class: "tweet-button", style: 'padding-left: 8px; padding-right: 8px;' %>
+        <!-- <span id="tweet-count">140</span> -->
+      </div>
+      <div class="composer-tools">
+        <a id="pin-post-btn" href="#">
+          <%= image_tag 'pin_post.png', class: 'composer-logo' %>
+        </a>
+        &middot;
         <a id="ps-media-upload-btn" href="javascript:void(0);">
-          Photo
+          <%= image_tag 'video.png', class: 'video-logo' %>
         </a>
         &middot;
         <a id="location-btn" href="#">
-          Location
+          <%= image_tag 'location.png', class: 'location-logo' %>
         </a>
+      </div>
   <% end %>
   <div id="tweet-error">
     <%= render 'partials/error_message', error_message: nil %>
